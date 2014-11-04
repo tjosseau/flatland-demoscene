@@ -1,0 +1,60 @@
+
+#------------------------------------------------------#
+# mkprj - Project Architecture Generator               #
+# https://github.com/tjosseau/mkprj                    #
+_VERSION_: 1.2
+#------------------------------------------------------#
+#   0             skip
+#   false         delete
+#   1 true        file
+#   2 *empty*     folder
+#   > (...)       file with inline content
+#   | (...)       file with block content
+#   @path         copy from mkprj modules
+#   ~path         copy from project root
+#   
+#   !file         delete file before creating it anew
+#------------------------------------------------------#
+
+#### Generic architecture ####
+
+    # Installation
+install.sh: |
+    bower install
+    npm install gulp
+    npm install gulp-concat
+    npm install gulp-uglify
+    npm install gulp-sourcemaps
+    npm install gulp-watch
+
+# Gulp
+gulpfile.js: 1
+
+# Index #
+index.html: @index.html     # Client index
+
+app:
+    fwk:
+        Objectyve.js: 1     # Home made framework -> github.com/tjosseau/objectyve
+        three.js: 1
+    lib:
+        domes.js: 1         # Home made library -> github.com/tjosseau/domes
+        domes-ext.js: 1
+        TweenLite.min.js: 1
+        threejs: 2
+
+    bootstrap.js: 1
+    main.js: 1
+
+    component:
+        Quadpic.js: 1
+        QuadGround.js: 1
+
+    ui:
+        Slider.js: 1
+
+    view:
+        base.css: 1
+        theme.css: 1
+
+media:
